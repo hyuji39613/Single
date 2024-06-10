@@ -43,9 +43,24 @@ public class InventoryManager : MonoBehaviour
         if (numList.Count <= 0) return;
         numList.Sort();
         Slots slot = invenList[numList[0]];
-        numList.Remove(0);
-        slot.gameObject.GetComponent<Image>().sprite = fishData.fishSprite;
-        slot.EnumSet(fishData.fishEnum);
+        numList.Remove(numList[0]);
+        slot.EnumSet(fishData);
         slot.gameObject.SetActive(true);
+    }
+
+
+    public void EmptyFill(int slotNum,FishDataSo fishData)
+    {
+        numList.Add(slotNum);
+        numList.Sort();
+        int n = numList[0];
+        int index = 0;
+        while (n < numList[1]-1)
+        {
+            invenList[numList[index]].gameObject.SetActive(true);
+            invenList[numList[index]].EnumSet(invenList[++numList[index]].fishData);
+            n++;
+            index++;
+        }
     }
 }

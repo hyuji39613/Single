@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class Slots : MonoBehaviour
 {
-    private FishEnum slotInfo;
     public int slotNum;
-
+    public FishDataSo fishData;
     private void Start()
     {
         GetComponent<Button>().onClick.AddListener(SlotBtn);
     }
-    public void EnumSet(FishEnum fishenum)
+    public void EnumSet(FishDataSo fishData)
     {
-        slotInfo = fishenum;
+        gameObject.GetComponent<Image>().sprite = fishData.fishSprite;
+        this.fishData = fishData;
     }
 
     private void SlotBtn()
@@ -22,8 +22,7 @@ public class Slots : MonoBehaviour
         if (DestoryItem.isDel)
         {
             gameObject.SetActive(false);
-            slotInfo = 0;
-            InventoryManager.instance.numList.Add(slotNum);
+            InventoryManager.instance.EmptyFill(slotNum,fishData);
             DestoryItem.isDel = false;
         }
     }
