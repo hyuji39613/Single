@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour
     private List<Slots> invenList = new List<Slots>();
     public static InventoryManager instance;
     private int invenNum;
-    private List<int> numList = new List<int>();
+    public List<int> numList = new List<int>();
     private void Start()
     {
         gameObject.SetActive(false);
@@ -40,9 +40,10 @@ public class InventoryManager : MonoBehaviour
     }
     public void FishingItem(FishDataSo fishData)
     {
-        if (invenList.Count <= 0) return;
-        invenList.Sort();
+        if (numList.Count <= 0) return;
+        numList.Sort();
         Slots slot = invenList[numList[0]];
+        numList.Remove(0);
         slot.gameObject.GetComponent<Image>().sprite = fishData.fishSprite;
         slot.EnumSet(fishData.fishEnum);
         slot.gameObject.SetActive(true);
