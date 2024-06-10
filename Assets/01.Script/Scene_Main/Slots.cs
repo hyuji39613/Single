@@ -22,7 +22,7 @@ public class Slots : MonoBehaviour
         if (DestoryItem.isDel)
         {
             gameObject.SetActive(false);
-            InventoryManager.instance.EmptyFill(slotNum,fishData);
+            InventoryManager.instance.EmptyFillStart(slotNum,fishData);
             DestoryItem.isDel = false;
         }
     }

@@ -1,17 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    private List<Slots> invenList = new List<Slots>();
-    public static InventoryManager instance;
-    private int invenNum;
-    public List<int> numList = new List<int>();
-    private void Start()
-    {
-        gameObject.SetActive(false);
-    }
+    private List<Slots> invenList = new List<Slots>();//인벤 슬롯들 담아두는 리스트
+    public static InventoryManager instance; //싱글턴
+    private int invenNum; // 시작할때 슬롯들 번호 매겨주는 용도
+    public List<int> emptySlotNums = new List<int>(); // 빈 슬롯 번호 목록
     private void Awake()
     {
         if (instance == null)
@@ -28,39 +24,47 @@ public class InventoryManager : MonoBehaviour
         {
             slot.gameObject.SetActive(false);
             slot.slotNum = invenNum;
-            numList.Add(invenNum);
+            emptySlotNums.Add(invenNum);
             invenList.Add(slot);
             invenNum++;
         }
     }
-
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
     public void ExitBtn()
     {
         gameObject.SetActive(false);
     }
     public void FishingItem(FishDataSo fishData)
     {
-        if (numList.Count <= 0) return;
-        numList.Sort();
-        Slots slot = invenList[numList[0]];
-        numList.Remove(numList[0]);
+        if (emptySlotNums.Count <= 0) return;
+        emptySlotNums.Sort();
+        int index = emptySlotNums[0];
+        Slots slot = invenList[index];
+        emptySlotNums.RemoveAt(0);
         slot.EnumSet(fishData);
         slot.gameObject.SetActive(true);
     }
 
-
-    public void EmptyFill(int slotNum,FishDataSo fishData)
+    public void EmptyFillStart(int slotNum, FishDataSo fishData)
     {
-        numList.Add(slotNum);
-        numList.Sort();
-        int n = numList[0];
-        int index = 0;
-        while (n < numList[1]-1)
+        StartCoroutine(EmptyFill(slotNum, fishData));
+    }
+
+    private IEnumerator EmptyFill(int slotNum, FishDataSo fishData)
+    {
+        int n = slotNum;
+        yield return new WaitForSeconds(0.7f);
+        do
         {
-            invenList[numList[index]].gameObject.SetActive(true);
-            invenList[numList[index]].EnumSet(invenList[++numList[index]].fishData);
-            n++;
-            index++;
-        }
+            //맨뒤 삭제시 문제
+            invenList[n].gameObject.SetActive(true);
+            invenList[n].EnumSet(invenList[++n].fishData);
+            invenList[n].gameObject.SetActive(false);
+        } while (n < emptySlotNums[0]-1);
+        emptySlotNums.Add(n);
+        invenList[n].gameObject.SetActive(false);
     }
 }
