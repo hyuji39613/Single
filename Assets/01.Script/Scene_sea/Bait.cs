@@ -22,7 +22,12 @@ public class Bait : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && trigger)
         {
+            int b = (int)(fish.GetComponent<Fish>().fishData.fishEnum);
             Destroy(fish);
+
+            EncyManager.instance.EncyEnable(b);
+            InventoryManager.instance.FishingItem(fish.GetComponent<Fish>().fishData);
+
         }
     }
 

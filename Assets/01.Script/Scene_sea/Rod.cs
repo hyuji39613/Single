@@ -8,7 +8,9 @@ public class Rod : MonoBehaviour
     float speed = 0.2f;
     void Update()
     {
-        Vector2 wheelInput = Input.mouseScrollDelta;
+        if (ScenreManage.Stoping) return;
+
+            Vector2 wheelInput = Input.mouseScrollDelta;
         if (wheelInput.y > 0)
         {
             transform.localScale += new Vector3(speed, 0, 0);
