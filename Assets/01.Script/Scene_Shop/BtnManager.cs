@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class BtnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void CommonRodBtn()
     {
-        
-    }
+        if(CoinManager.instance.UseCoin(CoinEnum.SilverCoin, 50))
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }
