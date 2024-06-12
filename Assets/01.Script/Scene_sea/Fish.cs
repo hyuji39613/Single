@@ -28,7 +28,7 @@ public class Fish : MonoBehaviour, Ipoolable
     private SpriteRenderer spriteRen;
     private float dir;
     public GameObject ObjectPrefab => gameObject;
-
+    public bool isFising = false;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -51,6 +51,7 @@ public class Fish : MonoBehaviour, Ipoolable
     }
     private void FixedUpdate()
     {
+        if (isFising) return;
         rigid.velocity = transform.right*dir * fishData.speed;
     }
 

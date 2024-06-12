@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/00.Scenes/Beach.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/00.Scenes/Start.unity
+    guid: b34b66765e42d7247a55979d7b401f33
   - enabled: 1
     path: Assets/00.Scenes/Main.unity
     guid: 4d0fc0c86228dc5409b79ca3c5cf60e2
@@ -17,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/CutScene/SeaInfo.unity
     guid: 9d5aa22f195169947ab037460bfe0483
+  - enabled: 1
+    path: Assets/00.Scenes/Shop.unity
+    guid: 8dcc0bf557117f94bb0de61b532ed336
   m_configObjects: {}

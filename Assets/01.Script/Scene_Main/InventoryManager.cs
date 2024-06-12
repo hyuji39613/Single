@@ -57,14 +57,18 @@ public class InventoryManager : MonoBehaviour
     {
         int n = slotNum;
         yield return new WaitForSeconds(0.7f);
-        do
+        if(!(emptySlotNums[0] - 1 == n))
         {
-            //맨뒤 삭제시 문제
-            invenList[n].gameObject.SetActive(true);
-            invenList[n].EnumSet(invenList[++n].fishData);
-            invenList[n].gameObject.SetActive(false);
-        } while (n < emptySlotNums[0]-1);
+            do
+            {
+                //맨뒤 삭제시 문제
+                invenList[n].gameObject.SetActive(true);
+                invenList[n].EnumSet(invenList[++n].fishData);
+                invenList[n].gameObject.SetActive(false);
+            } while (n < emptySlotNums[0] - 1);
+        }
         emptySlotNums.Add(n);
         invenList[n].gameObject.SetActive(false);
+        emptySlotNums.Sort();
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c015fe60de5a814e85d0d3017e6570a, type: 3}
   m_Name: Anchovy
   m_EditorClassIdentifier: 
-  fishEnum: 1
+  fishEnum: 0
   speed: 4
   fishSprite: {fileID: 21300000, guid: 680e7cad5f151364baec5886f5723453, type: 3}
   minY: -6

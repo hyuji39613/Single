@@ -1,6 +1,3 @@
-using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bait : MonoBehaviour
@@ -20,14 +17,18 @@ public class Bait : MonoBehaviour
         float a = rod.localScale.x * 0.5f;
         transform.position = line.position + line.right * a;
 
-        if (Input.GetKeyDown(KeyCode.Space) && trigger)
+        if (Input.GetKey(KeyCode.Space) && trigger)
         {
-            int b = (int)(fish.GetComponent<Fish>().fishData.fishEnum);
-            Destroy(fish);
+            Fish fishCompo = fish.GetComponent<Fish>();
+            fish.transform.position = transform.position;
+            fishCompo.isFising = true;
+            if (rod.localScale == new Vector3(1, 1, 1) && fishCompo.isFising)
+            {
+                Destroy(fish);
+                EncyManager.instance.EncyEnable((int)(fishCompo.fishData.fishEnum));
+                InventoryManager.instance.FishingItem(fishCompo.fishData);
 
-            EncyManager.instance.EncyEnable(b);
-            InventoryManager.instance.FishingItem(fish.GetComponent<Fish>().fishData);
-
+            }
         }
     }
 
@@ -35,8 +36,9 @@ public class Bait : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Fish"))
         {
-            trigger = true;        
+            trigger = true;
             fish = collision.gameObject;
+
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
