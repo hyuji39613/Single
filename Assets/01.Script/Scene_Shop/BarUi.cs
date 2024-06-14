@@ -30,15 +30,19 @@ public class BarUi : MonoBehaviour
     }
     public void SellBtn()
     {
-        sellShop.SetActive(true);     
+        sellShop.SetActive(true);
+        InventoryManager.instance.SellBtnOnOff(true);
     }
     public void SellCancel()
     {
         sellShop.SetActive(false);
+        InventoryManager.instance.SellBtnOnOff(false);
+
     }
     public void InvenBtn()
     {
-        InventoryManager.instance.gameObject.SetActive(true);
+        InventoryManager.instance.ExitBtn(true);
+        SellManager.instance.isSell = true;
     }
 
 }

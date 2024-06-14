@@ -12,6 +12,7 @@ public class FishSpawn : MonoBehaviour
             yield return new WaitForSeconds (spawnCoolTime);
 
             Fish fish = PoolManager.Instance.Pop("Fish") as Fish;     
+            Debug.Log("spawn");
             
         }
     }

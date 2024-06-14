@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ItemView : MonoBehaviour
 {
-    [SerializeField] private List<ItemSO> rodDataSo;
+     private List<ItemSO> rodDataSo = new List<ItemSO>();
     [SerializeField] private Image rodBtnImage;
     public ItemSO rodData;
     private int index;
@@ -27,10 +27,18 @@ public class ItemView : MonoBehaviour
     }
     public void RodBtnClick()
     {
+        if (rodDataSo.Count <= 0) return;
         if (index == rodDataSo.Count) index = 0;
         rodData = rodDataSo[index++];
 
         rodBtnImage.sprite = rodData.rodSprite;
-
+    }
+    public void BuyRod(ItemSO item)
+    {
+        rodDataSo.Add(item);
+        rodData = item;
+        index = rodDataSo.Count - 1;
+        rodBtnImage.sprite = rodData.rodSprite;
+        
     }
 }

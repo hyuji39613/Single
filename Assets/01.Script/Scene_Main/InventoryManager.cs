@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    [SerializeField] private GameObject sellBtn, sellCheck;
     private List<Slots> invenList = new List<Slots>();//인벤 슬롯들 담아두는 리스트
     public static InventoryManager instance; //싱글턴
     private int invenNum; // 시작할때 슬롯들 번호 매겨주는 용도
@@ -12,8 +13,8 @@ public class InventoryManager : MonoBehaviour
     {
         if (instance == null)
         {
-            DontDestroyOnLoad(gameObject);
             instance = this;
+              DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -31,11 +32,43 @@ public class InventoryManager : MonoBehaviour
     }
     private void Start()
     {
-        gameObject.SetActive(false);
+        ExitBtn();
     }
-    public void ExitBtn()
+    public void SellBtnOnOff(bool value)
     {
-        gameObject.SetActive(false);
+        sellBtn.SetActive(value);
+    }
+    public void SellectBtn()
+    {
+        sellCheck.SetActive(true);
+        SellManager.instance.isSell = false;
+    }
+    public void SellectOk()
+    {
+        StartCoroutine(abc());
+
+    }
+    private IEnumerator abc()
+    {
+        SellManager.instance.sellSlotList.Sort();
+        for (int i = 0; i < SellManager.instance.sellSlotList.Count; i++)
+        {
+            EmptyFill(SellManager.instance.sellSlotList[i]);
+            yield return new WaitForSeconds(0.5f);
+        }
+        SellManager.instance.SellCheckOk();
+        ExitBtn();
+        sellCheck.SetActive(false);
+    }
+    public void SellectNo()
+    {
+        sellCheck.SetActive(false);
+        SellManager.instance.isSell = true;
+        SellManager.instance.ReSetAll();
+    }
+    public void ExitBtn(bool value = false)
+    {
+        transform.Find("Canvas").gameObject.SetActive(value);
     }
     public void FishingItem(FishDataSo fishData)
     {
@@ -46,22 +79,38 @@ public class InventoryManager : MonoBehaviour
         emptySlotNums.RemoveAt(0);
         slot.EnumSet(fishData);
         slot.gameObject.SetActive(true);
-    }
 
-    public void EmptyFillStart(int slotNum, FishDataSo fishData)
+    }
+    public void EmptyFillStart(int slotNum)
     {
-        StartCoroutine(EmptyFill(slotNum, fishData));
+        StartCoroutine(EmptyFillCoru(slotNum));
     }
-
-    private IEnumerator EmptyFill(int slotNum, FishDataSo fishData)
+    private IEnumerator EmptyFillCoru(int slotNum)
     {
         int n = slotNum;
         yield return new WaitForSeconds(0.7f);
-        if(!(emptySlotNums[0] - 1 == n))
+        if (!(emptySlotNums[0] - 1 == n))
         {
             do
             {
-                //맨뒤 삭제시 문제
+                invenList[n].gameObject.SetActive(true);
+                invenList[n].EnumSet(invenList[++n].fishData);
+                invenList[n].gameObject.SetActive(false);
+            } while (n < emptySlotNums[0] - 1);
+        }
+        emptySlotNums.Add(n);
+        invenList[n].gameObject.SetActive(false);
+        emptySlotNums.Sort();
+        MainUi.Instance.FishingBasket();
+    }
+
+    private void EmptyFill(int slotNum)
+    {
+        int n = slotNum;
+        if (!(emptySlotNums[0] - 1 == n))
+        {
+            do
+            {
                 invenList[n].gameObject.SetActive(true);
                 invenList[n].EnumSet(invenList[++n].fishData);
                 invenList[n].gameObject.SetActive(false);

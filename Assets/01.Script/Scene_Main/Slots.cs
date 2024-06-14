@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Slots : MonoBehaviour
@@ -13,7 +14,7 @@ public class Slots : MonoBehaviour
     }
     public void EnumSet(FishDataSo fishData)
     {
-        gameObject.GetComponent<Image>().sprite = fishData.fishSprite;
+        gameObject.GetComponent<Image>().sprite = fishData.fishSprite;  
         this.fishData = fishData;
     }
 
@@ -22,8 +23,14 @@ public class Slots : MonoBehaviour
         if (DestoryItem.isDel)
         {
             gameObject.SetActive(false);
-            InventoryManager.instance.EmptyFillStart(slotNum,fishData);
+            InventoryManager.instance.EmptyFillStart(slotNum);
             DestoryItem.isDel = false;
+        }
+        if(SellManager.instance.isSell) 
+        {
+            SellManager.instance.SellItemSelect(slotNum,fishData);
+            GameObject button = EventSystem.current.currentSelectedGameObject;
+            button.transform.parent.GetComponent<Image>().color = Color.green;
         }
     }
 }

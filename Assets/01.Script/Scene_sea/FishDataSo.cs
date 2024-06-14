@@ -6,9 +6,10 @@ using UnityEngine;
 public class FishDataSo : ScriptableObject
 {
     public FishEnum fishEnum;
-
+    public CoinEnum coinEnum;
     public float speed;
     public Sprite fishSprite;
 
     public float minY, maxY;
+    public int price;
 }

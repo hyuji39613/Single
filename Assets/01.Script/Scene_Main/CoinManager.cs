@@ -12,7 +12,7 @@ public class CoinManager : MonoBehaviour
     public static CoinManager instance;
     [SerializeField] Text goldCoinTxt, silverCoinTxt;
 
-    private int goldCoin, silverCoin;
+    private int goldCoin = 0, silverCoin = 250;
 
 
     public void GetCoin(CoinEnum coinEnum,int value)
@@ -24,7 +24,7 @@ public class CoinManager : MonoBehaviour
     {
         if(coinEnum == CoinEnum.GoldCoin)
         {
-            if(goldCoin - value > 0)
+            if(goldCoin - value >= 0)
             {
                 goldCoin = goldCoin - value;
                 return true;
@@ -36,7 +36,7 @@ public class CoinManager : MonoBehaviour
         }
         else if(coinEnum == CoinEnum.SilverCoin)
         {
-            if (silverCoin - value > 0)
+            if (silverCoin - value >= 0)
             {
                 silverCoin = silverCoin - value;
                 return true;
