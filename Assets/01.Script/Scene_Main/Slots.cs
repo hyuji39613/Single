@@ -17,7 +17,6 @@ public class Slots : MonoBehaviour
         gameObject.GetComponent<Image>().sprite = fishData.fishSprite;  
         this.fishData = fishData;
     }
-
     private void SlotBtn()
     {
         if (DestoryItem.isDel)

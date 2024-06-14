@@ -15,5 +15,5 @@ MonoBehaviour:
   rodSprite: {fileID: 21300000, guid: 6579fa526e7e36047a9d431a8fd3e736, type: 3}
   rodMax: 11
   rodSpeed: 0.2
-  rodMinAngle: 0
-  rodMaxAngle: 0
+  rodMinAngle: -110
+  rodMaxAngle: -80

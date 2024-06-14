@@ -9,11 +9,9 @@ public enum CoinEnum
 }
 public class CoinManager : MonoBehaviour
 {
-    public static CoinManager instance;
     [SerializeField] Text goldCoinTxt, silverCoinTxt;
-
+    public static CoinManager instance;
     private int goldCoin = 0, silverCoin = 250;
-
 
     public void GetCoin(CoinEnum coinEnum,int value)
     {

@@ -27,9 +27,7 @@ public class EncyManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
-
-    
+    }  
     public void ExitBtn()
     {
         gameObject.SetActive(false);

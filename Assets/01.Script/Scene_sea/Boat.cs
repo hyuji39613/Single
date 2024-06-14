@@ -9,13 +9,10 @@ public class Boat : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             transform.position -= new Vector3(1, 0, 0)* 1.5f * Time.deltaTime;
-
         }
         if (Input.GetMouseButton(1))
         {
             transform.position += new Vector3(1, 0, 0) * 1.5f * Time.deltaTime;
-
         }
-
     }
 }

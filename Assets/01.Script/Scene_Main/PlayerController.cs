@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour
     public float h;
     public float speed = 1.5f;
     public Vector2 moveDir {  get; private set; }
-
-
     void Update()
     {
         v = Input.GetAxisRaw("Vertical");

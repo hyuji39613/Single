@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class one : MonoBehaviour
 {
-
     public void BtnC()
     {
         SceneManager.LoadScene("Sea");

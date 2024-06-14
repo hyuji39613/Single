@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Anchovy
   m_EditorClassIdentifier: 
   fishEnum: 0
-  coinEnum: 0
+  coinEnum: 1
   speed: 4
   fishSprite: {fileID: 21300000, guid: 353c53826d6cbde499b38be8675424d4, type: 3}
   minY: -6
   maxY: 0
-  price: 0
+  price: 15

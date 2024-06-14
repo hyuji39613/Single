@@ -7,8 +7,7 @@ public class DestoryItem : MonoBehaviour
     public static bool isDel = false;
 
     public void Delbtn()
-    {
-        
+    {       
         isDel = true;
     }
 }

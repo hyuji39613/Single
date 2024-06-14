@@ -8,14 +8,12 @@ public class ScenreManage : MonoBehaviour
     private void Start()
     {
         stopMenu.SetActive(false);
-
         if (SceneManager.GetActiveScene().name == "Sea")
         {
             Cursor.visible = false;
             Stoping = false;
         }
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -25,12 +23,10 @@ public class ScenreManage : MonoBehaviour
             Stoping = true;
         }
     }
-
     public void ExitBtn()
     {
         SceneManager.LoadScene("Main");
         Time.timeScale = 1;
-
     }
     public void StartBtn()
     {

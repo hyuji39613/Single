@@ -3,15 +3,12 @@ using UnityEngine;
 
 public class Bait : MonoBehaviour
 {
-
     [SerializeField]
     private Transform line;
     [SerializeField]
     private Transform rod;
     private bool trigger = false;
     private GameObject fish;
-
-
 
     private void Update()
     {
@@ -33,7 +30,6 @@ public class Bait : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Fish"))

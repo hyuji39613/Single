@@ -11,12 +11,9 @@ public class FishSpawn : MonoBehaviour
             float spawnCoolTime = Random.Range (1.0f, 5.0f);
             yield return new WaitForSeconds (spawnCoolTime);
 
-            Fish fish = PoolManager.Instance.Pop("Fish") as Fish;     
-            Debug.Log("spawn");
-            
+            Fish fish = PoolManager.Instance.Pop("Fish") as Fish;        
         }
     }
-
     private void Start()
     {
         StartCoroutine(FishSqawnCo());

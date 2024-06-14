@@ -9,7 +9,4 @@ public class ItemSO : ScriptableObject
     public float rodMax;
     public float rodSpeed;
     public float rodMinAngle, rodMaxAngle;
-    
-    
-
 }

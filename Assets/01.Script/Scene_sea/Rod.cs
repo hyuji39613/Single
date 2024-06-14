@@ -13,8 +13,7 @@ public class Rod : MonoBehaviour
     }
     void Update()
     {
-        if (ScenreManage.Stoping) return;
-        
+        if (ScenreManage.Stoping) return;     
         if (Input.GetKeyDown(KeyCode.Space))
         {
             transform.DOScaleX(1, 0.3f).SetEase(Ease.InOutQuad);
@@ -27,11 +26,7 @@ public class Rod : MonoBehaviour
         else if (wheelInput.y < 0)
         {
             transform.localScale -= new Vector3(rodData.rodSpeed, 0, 0);
-    
         }
         transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x, 1, rodData.rodMax), transform.localScale.y, transform.localScale.z);
     }
-
-    
-
 }

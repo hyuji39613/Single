@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
     }
- 
     private void FixedUpdate()
     {
         rb.velocity = playerController.moveDir;

@@ -9,7 +9,6 @@ public class FishDataSo : ScriptableObject
     public CoinEnum coinEnum;
     public float speed;
     public Sprite fishSprite;
-
     public float minY, maxY;
     public int price;
 }

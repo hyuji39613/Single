@@ -9,20 +9,12 @@ public class Beach : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Sea"))
         {
-            //PcPosition.instance.SceneChange();
             SceneManager.LoadScene("SeaInfo");
 
         }
         if (collision.gameObject.CompareTag("Shop"))
         {
-            //PcPosition.instance.SceneChange();
             SceneManager.LoadScene("Shop");
         }
-    }
-
-
-    private void Update()
-    {
-        
     }
 }

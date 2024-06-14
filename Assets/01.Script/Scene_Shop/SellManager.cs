@@ -22,7 +22,6 @@ public class SellManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     public void ReSetAll()
     {
         sellSlotList.Clear();
@@ -43,7 +42,6 @@ public class SellManager : MonoBehaviour
             goldPriceSum += fishData.price;
         }
     }
-
     public void SellCheckOk()
     {
         CoinManager.instance.GetCoin(CoinEnum.SilverCoin, silverPriceSum);

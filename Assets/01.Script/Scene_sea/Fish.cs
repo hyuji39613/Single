@@ -54,7 +54,6 @@ public class Fish : MonoBehaviour, Ipoolable
         if (isFising) return;
         rigid.velocity = transform.right*dir * fishData.speed;
     }
-
     public void ResetItem()
     {
 

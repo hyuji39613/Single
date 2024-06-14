@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class MainUi : MonoSingleTon<MainUi>
 {
     [SerializeField] private List<Sprite> basket;
-    
     public Image inventoryBasket;
 
     private void Start()
@@ -17,13 +16,10 @@ public class MainUi : MonoSingleTon<MainUi>
     public void EncyBtn()
     {
         EncyManager.instance.gameObject.SetActive(true);
-    }
-    
+    } 
     public void InvenBtn()
     {
-        InventoryManager.instance.ExitBtn(true);
-
-        
+        InventoryManager.instance.ExitBtn(true);       
     }
     public void FishingBasket()
     {
@@ -31,6 +27,5 @@ public class MainUi : MonoSingleTon<MainUi>
            inventoryBasket.sprite = basket[0];
         else
             inventoryBasket.sprite = basket[1];
-
     }
 }

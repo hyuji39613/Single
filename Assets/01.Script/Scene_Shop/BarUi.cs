@@ -37,7 +37,6 @@ public class BarUi : MonoBehaviour
     {
         sellShop.SetActive(false);
         InventoryManager.instance.SellBtnOnOff(false);
-
     }
     public void InvenBtn()
     {

@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject sellBtn, sellCheck;
+    public Color slotColor;
     private List<Slots> invenList = new List<Slots>();//인벤 슬롯들 담아두는 리스트
     public static InventoryManager instance; //싱글턴
     private int invenNum; // 시작할때 슬롯들 번호 매겨주는 용도
     public List<int> emptySlotNums = new List<int>(); // 빈 슬롯 번호 목록
+
     private void Awake()
     {
         if (instance == null)
@@ -45,16 +49,11 @@ public class InventoryManager : MonoBehaviour
     }
     public void SellectOk()
     {
-        StartCoroutine(abc());
-
-    }
-    private IEnumerator abc()
-    {
         SellManager.instance.sellSlotList.Sort();
-        for (int i = 0; i < SellManager.instance.sellSlotList.Count; i++)
+        for (int i = SellManager.instance.sellSlotList.Count - 1; i >= 0; i--)
         {
             EmptyFill(SellManager.instance.sellSlotList[i]);
-            yield return new WaitForSeconds(0.5f);
+            invenList[SellManager.instance.sellSlotList[i]].gameObject.transform.parent.GetComponent<Image>().color = slotColor;
         }
         SellManager.instance.SellCheckOk();
         ExitBtn();
@@ -64,7 +63,10 @@ public class InventoryManager : MonoBehaviour
     {
         sellCheck.SetActive(false);
         SellManager.instance.isSell = true;
+        for (int i = SellManager.instance.sellSlotList.Count-1; i >= 0; i--)
+            invenList[SellManager.instance.sellSlotList[i]].gameObject.transform.parent.GetComponent<Image>().color = slotColor;
         SellManager.instance.ReSetAll();
+
     }
     public void ExitBtn(bool value = false)
     {
@@ -103,7 +105,6 @@ public class InventoryManager : MonoBehaviour
         emptySlotNums.Sort();
         MainUi.Instance.FishingBasket();
     }
-
     private void EmptyFill(int slotNum)
     {
         int n = slotNum;

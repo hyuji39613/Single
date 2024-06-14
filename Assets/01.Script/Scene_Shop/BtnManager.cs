@@ -31,7 +31,6 @@ public class BtnManager : MonoBehaviour
             DestoryShopItem();
         }
     }
-
     private static void DestoryShopItem()
     {
         GameObject button = EventSystem.current.currentSelectedGameObject;

@@ -34,5 +34,4 @@ public class PcPosition : MonoBehaviour
     {
         playerTrm.position = playerPosition;
     }
-
 }
