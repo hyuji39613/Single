@@ -1,14 +1,14 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class Bait : MonoBehaviour
+public class Bait : MonoSingleton<Bait>
 {
     [SerializeField]
     private Transform line;
     [SerializeField]
     private Transform rod;
-    private bool trigger = false;
-    private GameObject fish;
+    public bool trigger = false;
+    public GameObject fish;
 
     private void Update()
     {
@@ -26,23 +26,9 @@ public class Bait : MonoBehaviour
                 Destroy(fish);
                 EncyManager.instance.EncyEnable((int)(fishCompo.fishData.fishEnum));
                 InventoryManager.instance.FishingItem(fishCompo.fishData);
-
+                trigger = false;                            
             }
+     
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Fish"))
-        {
-            trigger = true;
-            fish = collision.gameObject;
-
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        trigger = false;
-    }
-
-
 }

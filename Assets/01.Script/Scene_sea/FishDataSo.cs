@@ -11,4 +11,5 @@ public class FishDataSo : ScriptableObject
     public Sprite fishSprite;
     public float minY, maxY;
     public int price;
+    public Vector2 boxSize;
 }

@@ -10,6 +10,7 @@ public class BarUi : MonoBehaviour
     public GameObject buyShop;
     public GameObject sellShop;
 
+    
     private void Start()
     {
         buyShop.SetActive(false);
@@ -22,11 +23,7 @@ public class BarUi : MonoBehaviour
     }
     public void BuyBtn()
     {
-        buyShop.SetActive(true);
-    }
-    public void BuyCancel()
-    {
-        buyShop.SetActive(false);
+        BtnManager.Instance.BuyPanel.SetActive(true);
     }
     public void SellBtn()
     {

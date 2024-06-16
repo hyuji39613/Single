@@ -6,10 +6,23 @@ using UnityEngine.EventSystems;
 public class BtnManager : MonoBehaviour
 {
     [SerializeField] private List<ItemSO> rodDataSo;
-
+    public static BtnManager Instance;
+    public GameObject BuyPanel;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     public void CommonRodBtn()
     {
-        if(CoinManager.instance.UseCoin(CoinEnum.SilverCoin, 50))
+        if (CoinManager.instance.UseCoin(CoinEnum.SilverCoin, 50))
         {
             ItemView.instance.BuyRod(rodDataSo[0]);
             DestoryShopItem();
@@ -35,5 +48,10 @@ public class BtnManager : MonoBehaviour
     {
         GameObject button = EventSystem.current.currentSelectedGameObject;
         button.transform.parent.gameObject.SetActive(false);
+    }
+
+    public void ExitBuyPanel()
+    {
+        BuyPanel.SetActive(false);
     }
 }

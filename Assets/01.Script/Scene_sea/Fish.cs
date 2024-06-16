@@ -22,6 +22,7 @@ public class Fish : MonoBehaviour, Ipoolable
     [SerializeField] private string poolName;
     [SerializeField] private List<FishDataSo> fishDataList;
     [SerializeField] private List<float> posXList;
+    [SerializeField] private LayerMask layerMask;
     public string PoolName => poolName;
     public FishDataSo fishData;
     private Rigidbody2D rigid;
@@ -51,11 +52,39 @@ public class Fish : MonoBehaviour, Ipoolable
     }
     private void FixedUpdate()
     {
+        TriggerBool();
         if (isFising) return;
-        rigid.velocity = transform.right*dir * fishData.speed;
+        rigid.velocity = transform.right * dir * fishData.speed;
     }
     public void ResetItem()
     {
 
     }
+
+    public void TriggerBool()
+    {
+        Collider2D collider = Physics2D.OverlapBox(transform.position, fishData.boxSize, layerMask);
+        if(collider && Bait.Instance.trigger == false)
+        {
+            Bait.Instance.trigger = collider;
+            Debug.Log(Bait.Instance.trigger);
+            Bait.Instance.fish = gameObject;    
+        }
+        else if(isFising&&!collider)
+        {
+            Bait.Instance.trigger = false;
+        }
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawCube(transform.position,fishData.boxSize);
+        Gizmos.color = Color.white;
+
+        
+    }
+#endif
+
 }
