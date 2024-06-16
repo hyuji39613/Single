@@ -32,4 +32,6 @@ public class Slots : MonoBehaviour
             button.transform.parent.GetComponent<Image>().color = Color.green;
         }
     }
+
+
 }

@@ -37,8 +37,8 @@ public class Fish : MonoBehaviour, Ipoolable
     }
     private void OnEnable()
     {
-        int fishNumber = Random.Range(0, fishDataList.Count);
-        fishData = fishDataList[0];
+        int fishNumber = Random.Range(0, 2);
+        fishData = fishDataList[fishNumber];
 
         spriteRen.sprite = fishData.fishSprite;
 
@@ -64,10 +64,9 @@ public class Fish : MonoBehaviour, Ipoolable
     public void TriggerBool()
     {
         Collider2D collider = Physics2D.OverlapBox(transform.position, fishData.boxSize, layerMask);
-        if(collider && Bait.Instance.trigger == false)
+        if(collider && !Bait.Instance.trigger &&!Bait.Instance.pulling)
         {
             Bait.Instance.trigger = collider;
-            Debug.Log(Bait.Instance.trigger);
             Bait.Instance.fish = gameObject;    
         }
         else if(isFising&&!collider)
