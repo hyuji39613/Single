@@ -19,6 +19,7 @@ public class Bait : MonoSingleton<Bait>
             pulling = true;
             if (trigger)
             {
+                Debug.Log(trigger);
                 Fish fishCompo = fish.GetComponent<Fish>();
                 fish.transform.position = transform.position;
                 fishCompo.isFising = true;
