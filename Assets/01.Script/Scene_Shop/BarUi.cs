@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class BarUi : MonoBehaviour
+public class BarUi : MonoSingleTon<BarUi>
 {
     public GameObject buyShop;
     public GameObject sellShop;

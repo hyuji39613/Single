@@ -34,7 +34,7 @@ public class Bait : MonoSingleton<Bait>
         }
         else
         {
-            pulling = false;
+            pulling =false;
         }
     }
 }

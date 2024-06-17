@@ -58,6 +58,7 @@ public class InventoryManager : MonoBehaviour
         SellManager.instance.SellCheckOk();
         ExitBtn();
         sellCheck.SetActive(false);
+        BarUi.Instance.sellShop.SetActive(false);
         SellManager.instance.ReSetAll();
     }
     public void SellectNo()

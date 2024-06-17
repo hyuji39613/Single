@@ -28,6 +28,7 @@ public class Fish : MonoBehaviour, Ipoolable
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRen;
     private float dir;
+    private bool collision = false;
     public GameObject ObjectPrefab => gameObject;
     public bool isFising = false;
     private void Awake()
@@ -67,11 +68,13 @@ public class Fish : MonoBehaviour, Ipoolable
         if(collider && !Bait.Instance.trigger &&!Bait.Instance.pulling)
         {
             Bait.Instance.trigger = collider;
-            Bait.Instance.fish = gameObject;    
+            Bait.Instance.fish = gameObject;
+            collision = true;
         }
-        else if(isFising&&!collider)
+        else if(collision&& !collider)
         {
             Bait.Instance.trigger = false;
+            collision = false;
         }
     }
 
