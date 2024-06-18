@@ -9,11 +9,11 @@ public class TalkSystem : MonoBehaviour
     private bool pushEsc;
     private void Start()
     {
-        StartCoroutine(Typing(txt, "¾È³ç11dasd", 0.2f, a));
+        StartCoroutine(Typing(txt, "¾È³ç11dasd", 0.1f, a));
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             pushEsc = true;
         }
