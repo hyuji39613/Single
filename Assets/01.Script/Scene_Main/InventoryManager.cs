@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance; //싱글턴
     private int invenNum; // 시작할때 슬롯들 번호 매겨주는 용도
     public List<int> emptySlotNums = new List<int>(); // 빈 슬롯 번호 목록
+    public GameObject delBtn;
 
     private void Awake()
     {
@@ -60,6 +61,7 @@ public class InventoryManager : MonoBehaviour
         sellCheck.SetActive(false);
         BarUi.Instance.sellShop.SetActive(false);
         SellManager.instance.ReSetAll();
+        DelBtn();
     }
     public void SellectNo()
     {
@@ -122,5 +124,10 @@ public class InventoryManager : MonoBehaviour
         emptySlotNums.Add(n);
         invenList[n].gameObject.SetActive(false);
         emptySlotNums.Sort();
+    }
+
+    public void DelBtn(bool value = true)
+    {
+        delBtn.SetActive(value);
     }
 }

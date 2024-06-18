@@ -17,6 +17,14 @@ public class BarUi : MonoSingleTon<BarUi>
         sellShop.SetActive(false);
 
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+         BtnManager.Instance.BuyPanel.SetActive(false);
+        }
+    }
     public void Exitbtn()
     {
         SceneManager.LoadScene("Main");
@@ -29,11 +37,13 @@ public class BarUi : MonoSingleTon<BarUi>
     {
         sellShop.SetActive(true);
         InventoryManager.instance.SellBtnOnOff(true);
+        InventoryManager.instance.DelBtn(false);
     }
     public void SellCancel()
     {
         sellShop.SetActive(false);
         InventoryManager.instance.SellBtnOnOff(false);
+        InventoryManager.instance.DelBtn();
     }
     public void InvenBtn()
     {

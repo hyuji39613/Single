@@ -11,7 +11,20 @@ public class MainUi : MonoSingleTon<MainUi>
     public Image inventoryBasket;
     public GameObject stopUi;
     public GameObject SettingUi;
-
+    private bool escOn=false;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !escOn)
+        {
+            escOn = true;
+            StopBtn();
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && escOn)
+        {
+            ContinueBtn();
+            escOn = false;
+        }
+    }
     private void Start()
     {
         FishingBasket();

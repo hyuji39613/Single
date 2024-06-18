@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ItemView : MonoBehaviour
@@ -38,5 +39,20 @@ public class ItemView : MonoBehaviour
         index = rodDataSo.Count - 1;
         rodBtnImage.sprite = rodData.rodSprite;
         
+    }
+    private void Update()
+    {
+        ViewVisible();
+    }
+    public void ViewVisible()
+    {
+        if(SceneManager.GetActiveScene().name == "Main")
+        {
+            transform.localScale = Vector3.one;
+        }
+        else
+        {
+            transform.localScale = Vector3.zero;
+        }
     }
 }
