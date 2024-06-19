@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: WhiteDongari
   m_EditorClassIdentifier: 
   fishEnum: 6
-  speed: 0
-  fishSprite: {fileID: 0}
-  minY: 0
-  maxY: 0
+  coinEnum: 0
+  speed: 4
+  fishSprite: {fileID: 21300000, guid: 153a198f7d45e674ea2bc272bb69f21b, type: 3}
+  minY: -17
+  maxY: -7.5
+  price: 0

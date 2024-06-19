@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: StarFish
   m_EditorClassIdentifier: 
   fishEnum: 2
-  speed: 0
-  fishSprite: {fileID: 0}
-  minY: 0
+  coinEnum: 1
+  speed: 4
+  fishSprite: {fileID: 21300000, guid: 6dbff9bea2203f84fa729860fb925932, type: 3}
+  minY: -6
   maxY: 0
+  price: 0

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Sunfish
   m_EditorClassIdentifier: 
   fishEnum: 9
-  speed: 0
-  fishSprite: {fileID: 0}
-  minY: 0
-  maxY: 0
+  coinEnum: 0
+  speed: 10
+  fishSprite: {fileID: 21300000, guid: 2e62e00e09723374ea5fd623c8f25088, type: 3}
+  minY: -29
+  maxY: -17
+  price: 0

@@ -15,12 +15,15 @@ public enum FishEnum
     WhiteDongari,
     Bluetang,
     Sharks,
-    Sunfish
+    Sunfish,
+    garBag,
+    plCup,
+    pot,
+    glassCup
 }
 public class Fish : MonoBehaviour, Ipoolable
 {
     [SerializeField] private string poolName;
-    [SerializeField] private List<FishDataSo> fishDataList;
     [SerializeField] private List<float> posXList;
     [SerializeField] private LayerMask layerMask;
     public string PoolName => poolName;
@@ -28,7 +31,6 @@ public class Fish : MonoBehaviour, Ipoolable
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRen;
     private float dir;
-    private bool collision = false;
     public GameObject ObjectPrefab => gameObject;
     public bool isFising = false;
     private void Awake()
@@ -38,11 +40,6 @@ public class Fish : MonoBehaviour, Ipoolable
     }
     private void OnEnable()
     {
-        int fishNumber = Random.Range(0, 2);
-        fishData = fishDataList[fishNumber];
-
-        spriteRen.sprite = fishData.fishSprite;
-
         float posY = Random.Range(fishData.minY, fishData.maxY);
         int ranX = Random.Range(0, 2);
         float posX = posXList[ranX];
@@ -53,40 +50,14 @@ public class Fish : MonoBehaviour, Ipoolable
     }
     private void FixedUpdate()
     {
-        TriggerBool();
+        if(Mathf.Abs(transform.position.x)>= 11.1f)
+        {
+            PoolManager.Instance.Push(this);
+        }
         if (isFising) return;
         rigid.velocity = transform.right * dir * fishData.speed;
     }
     public void ResetItem()
     {
-
     }
-
-    public void TriggerBool()
-    {
-        Collider2D collider = Physics2D.OverlapBox(transform.position, fishData.boxSize, layerMask);
-        if(collider && !Bait.Instance.trigger &&!Bait.Instance.pulling)
-        {
-            Bait.Instance.trigger = collider;
-            Bait.Instance.fish = gameObject;
-            collision = true;
-        }
-        else if(collision&& !collider)
-        {
-            Bait.Instance.trigger = false;
-            collision = false;
-        }
-    }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(transform.position,fishData.boxSize);
-        Gizmos.color = Color.white;
-
-        
-    }
-#endif
-
 }

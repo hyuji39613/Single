@@ -12,6 +12,7 @@ public class ItemView : MonoBehaviour
     public ItemSO rodData;
     private int index;
     public static ItemView instance;
+    [SerializeField] private GameObject potBtn,glassBtn;
 
     private void Awake()
     {
@@ -36,9 +37,8 @@ public class ItemView : MonoBehaviour
     {
         rodDataSo.Add(item);
         rodData = item;
-        index = rodDataSo.Count - 1;
+        index = rodDataSo.Count;
         rodBtnImage.sprite = rodData.rodSprite;
-        
     }
     private void Update()
     {
@@ -54,5 +54,22 @@ public class ItemView : MonoBehaviour
         {
             transform.localScale = Vector3.zero;
         }
+    }
+    
+    public void PotBtnOn()
+    {
+        potBtn.SetActive(true);
+    }
+    public void PotBtn()
+    {
+        //냄비 착용 비착용 코드 작성
+    }
+    public void GlassBtnOn()
+    {
+        glassBtn.SetActive(true);
+    }
+    public void GlassBtn()
+    {
+        //유리병 관련 코드
     }
 }

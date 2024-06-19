@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Sharks
   m_EditorClassIdentifier: 
   fishEnum: 8
-  speed: 0
-  fishSprite: {fileID: 0}
-  minY: 0
-  maxY: 0
+  coinEnum: 0
+  speed: 8
+  fishSprite: {fileID: 21300000, guid: e80da5f74fe96c34b893fc91727d9499, type: 3}
+  minY: -29
+  maxY: -17
+  price: 0

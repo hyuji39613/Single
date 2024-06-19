@@ -13,4 +13,17 @@ MonoBehaviour:
   m_Name: PoolList
   m_EditorClassIdentifier: 
   list:
+  - {fileID: 11400000, guid: 91edbcbaf01f2304dbd82b9c53edf2ce, type: 2}
+  - {fileID: 11400000, guid: 19eda7ff068f39d44b104b3fd292b0bd, type: 2}
+  - {fileID: 11400000, guid: 1950f01c80968eb41b3a3909e710518b, type: 2}
+  - {fileID: 11400000, guid: 20c91ed598604e648a1f6bb7549052b1, type: 2}
   - {fileID: 11400000, guid: 2bebf7fb83a96b140b9c8bd83bd004f5, type: 2}
+  - {fileID: 11400000, guid: d5e9d3b15ff25874b87dd005acdf3a39, type: 2}
+  - {fileID: 11400000, guid: 81cbf9aa7323ece4581651560623e7c4, type: 2}
+  - {fileID: 11400000, guid: 1365395421a1a9c4397d278ee4ef9d24, type: 2}
+  - {fileID: 11400000, guid: 02ce88491dd191a41bdf08ce13277368, type: 2}
+  - {fileID: 11400000, guid: 98cc4f2817519f14aabe6cfdc56b40d2, type: 2}
+  - {fileID: 11400000, guid: d54f2d1445c9e2549ae2e106415f8533, type: 2}
+  - {fileID: 11400000, guid: d2408fc43e6aea5418ee6bbc67724425, type: 2}
+  - {fileID: 11400000, guid: 5c99f013b0fa354409d3bdec99121916, type: 2}
+  - {fileID: 11400000, guid: 0d02eb1e75b414f419878203cb06c54f, type: 2}

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: PufferFish
   m_EditorClassIdentifier: 
   fishEnum: 5
-  speed: 0
-  fishSprite: {fileID: 0}
-  minY: 0
-  maxY: 0
+  coinEnum: 1
+  speed: 5
+  fishSprite: {fileID: 21300000, guid: f9bfbd2da906e634d9ec553105d36687, type: 3}
+  minY: -17
+  maxY: -7.5
+  price: 0

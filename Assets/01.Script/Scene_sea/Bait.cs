@@ -28,14 +28,33 @@ public class Bait : MonoSingleton<Bait>
                     Camera.main.transform.DOMoveY(0, 0.3f).SetEase(Ease.InOutQuad);
                     Destroy(fish);
                     EncyManager.instance.EncyEnable((int)(fishCompo.fishData.fishEnum));
-                    InventoryManager.instance.FishingItem(fishCompo.fishData);
                     trigger = false;
+                    if (fishCompo.fishData.fishEnum == FishEnum.pot)
+                        ItemView.instance.PotBtnOn();
+
+                    else if (fishCompo.fishData.fishEnum == FishEnum.glassCup)
+                        ItemView.instance.GlassBtnOn();
+                    else
+                        InventoryManager.instance.FishingItem(fishCompo.fishData);
                 }
             }
         }
         else
         {
-            pulling =false;
+            pulling = false;
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fish"))
+        {
+            fish = collision.gameObject;
+            trigger = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fish"))
+            trigger = false;
     }
 }
