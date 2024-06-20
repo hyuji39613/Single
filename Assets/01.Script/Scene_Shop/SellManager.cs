@@ -9,7 +9,7 @@ public class SellManager : MonoBehaviour
     public GameObject SellCheck;
     public static SellManager instance;
     public bool isSell = false;
-    private int silverPriceSum, goldPriceSum;
+    public int silverPriceSum, goldPriceSum;
 
     private void Awake()
     {

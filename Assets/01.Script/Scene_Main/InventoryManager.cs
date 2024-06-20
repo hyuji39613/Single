@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,7 +14,8 @@ public class InventoryManager : MonoBehaviour
     private int invenNum; // 시작할때 슬롯들 번호 매겨주는 용도
     public List<int> emptySlotNums = new List<int>(); // 빈 슬롯 번호 목록
     public GameObject delBtn;
-
+    [SerializeField]
+    private TextMeshProUGUI silTxt,goldTxt;
     private void Awake()
     {
         if (instance == null)
@@ -47,6 +49,8 @@ public class InventoryManager : MonoBehaviour
     {
         sellCheck.SetActive(true);
         SellManager.instance.isSell = false;
+        silTxt.text = SellManager.instance.silverPriceSum.ToString();
+        goldTxt.text = SellManager.instance.goldPriceSum.ToString();
     }
     public void SellectOk()
     {

@@ -19,7 +19,6 @@ public class ItemView : MonoBehaviour
     private RectTransform itemViewUi;
     [SerializeField]
     private Image arrow;
-    private Tween tween;
     private float tweenTime = 1f;
     private void Awake()
     {
@@ -33,9 +32,8 @@ public class ItemView : MonoBehaviour
             Destroy(gameObject);
         }
         Color color = arrow.color;
-        color.a = 0;
+        color.a = 1;
         arrow.color = color;
-        tween = arrow.DOFade(1, tweenTime).SetLoops(-1, LoopType.Yoyo);
     }
     public void RodBtnClick()
     {
@@ -90,11 +88,12 @@ public class ItemView : MonoBehaviour
         Color color = arrow.color;
         color.a = 0;
         arrow.color = color;
-        tween.Kill();   
     }
     public void RightMove()
     {
         itemViewUi.DOAnchorPosX(154, 0.3f).SetEase(Ease.InExpo);
-        tween = arrow.DOFade(1,tweenTime).SetLoops(-1,LoopType.Yoyo);
+        Color color = arrow.color;
+        color.a = 1;
+        arrow.color = color;
     }
 }
