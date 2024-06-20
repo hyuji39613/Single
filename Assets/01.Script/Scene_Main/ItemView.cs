@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,12 @@ public class ItemView : MonoBehaviour
     private int index;
     public static ItemView instance;
     [SerializeField] private GameObject potBtn,glassBtn;
-
+    [SerializeField]
+    private RectTransform itemViewUi;
+    [SerializeField]
+    private Image arrow;
+    private Tween tween;
+    private float tweenTime = 1f;
     private void Awake()
     {
         if(instance == null)
@@ -26,6 +32,10 @@ public class ItemView : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Color color = arrow.color;
+        color.a = 0;
+        arrow.color = color;
+        tween = arrow.DOFade(1, tweenTime).SetLoops(-1, LoopType.Yoyo);
     }
     public void RodBtnClick()
     {
@@ -72,5 +82,19 @@ public class ItemView : MonoBehaviour
     public void GlassBtn()
     {
         //유리병 관련 코드
+    }
+
+    public void LeftMove()
+    {
+        itemViewUi.DOAnchorPosX(-340, 0.3f).SetEase(Ease.OutExpo);
+        Color color = arrow.color;
+        color.a = 0;
+        arrow.color = color;
+        tween.Kill();   
+    }
+    public void RightMove()
+    {
+        itemViewUi.DOAnchorPosX(154, 0.3f).SetEase(Ease.InExpo);
+        tween = arrow.DOFade(1,tweenTime).SetLoops(-1,LoopType.Yoyo);
     }
 }

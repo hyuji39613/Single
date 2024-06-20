@@ -8,12 +8,12 @@ public class ItenViewDo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
-        transform.DOLocalMoveX(640, 0.3f);    
+        ItemView.instance.LeftMove();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        transform.DOLocalMoveX(1200, 0.3f);
+        ItemView.instance.RightMove();
 
     }
 }
