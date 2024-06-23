@@ -10,7 +10,7 @@ public class SellManager : MonoBehaviour
     public static SellManager instance;
     public bool isSell = false;
     public int silverPriceSum, goldPriceSum;
-
+    public bool isFirst = true;
     private void Awake()
     {
         if(instance == null)

@@ -7,12 +7,12 @@ public class ScenreManage : MonoBehaviour
     public GameObject stopMenu;
     private void Start()
     {
+        Stoping = false;
         stopMenu.SetActive(false);
-        if (SceneManager.GetActiveScene().name == "Sea")
-        {
-            Cursor.visible = false;
-            Stoping = false;
-        }
+        //if (SceneManager.GetActiveScene().name == "Sea")
+        //{
+        //    Cursor.visible = false;
+        //}
     }
     private void Update()
     {
