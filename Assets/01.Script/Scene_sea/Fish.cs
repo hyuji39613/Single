@@ -59,5 +59,6 @@ public class Fish : MonoBehaviour, Ipoolable
     }
     public void ResetItem()
     {
+        isFising = false;
     }
 }

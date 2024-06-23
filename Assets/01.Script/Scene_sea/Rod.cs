@@ -6,10 +6,12 @@ using UnityEngine;
 public class Rod : MonoBehaviour
 {
     private ItemSO rodData;
+    public SpriteRenderer bait;
 
     private void Awake()
     {
-        rodData = ItemView.instance.rodData;
+        rodData = ItemView.instance.rodData;      
+        bait.sprite = rodData.rodSprite;
     }
     void Update()
     {

@@ -15,7 +15,7 @@ MonoBehaviour:
   fishEnum: 2
   coinEnum: 1
   speed: 4
-  fishSprite: {fileID: 21300000, guid: 6dbff9bea2203f84fa729860fb925932, type: 3}
+  fishSprite: {fileID: 21300000, guid: aae42682d1054ff4c9e314b73a32e164, type: 3}
   minY: -6
   maxY: 0
   price: 0

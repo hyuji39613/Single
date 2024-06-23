@@ -8,8 +8,10 @@ public class GarbageSpawn : MonoBehaviour
     {
         StartCoroutine(GarbageBagSpawn());
         StartCoroutine(PlCupSpawn());
-        StartCoroutine(PotSpawn());
-        StartCoroutine(GlassCupSpawn());
+        if(!ItemView.instance.isPot)
+            StartCoroutine(PotSpawn());
+        if(!ItemView.instance.isGlass)
+            StartCoroutine(GlassCupSpawn());
     }
     private IEnumerator GarbageBagSpawn()
     {
@@ -30,13 +32,15 @@ public class GarbageSpawn : MonoBehaviour
         float ranTime = Random.Range(20f, 30f);
         yield return new WaitForSeconds(ranTime);
         Fish fish = PoolManager.Instance.Pop("Pot") as Fish;
-        StartCoroutine(PotSpawn());
+        if (!ItemView.instance.isPot)
+            StartCoroutine(PotSpawn());
     }
     private IEnumerator GlassCupSpawn()
     {
         float ranTime = Random.Range(30f, 40f);
         yield return new WaitForSeconds(ranTime);
         Fish fish = PoolManager.Instance.Pop("GlassCup") as Fish;
-        StartCoroutine(GlassCupSpawn());
+        if (!ItemView.instance.isGlass)
+            StartCoroutine(GlassCupSpawn());
     }
 }

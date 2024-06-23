@@ -8,6 +8,7 @@ public class BtnManager : MonoBehaviour
     [SerializeField] private List<ItemSO> rodDataSo;
     public static BtnManager Instance;
     public GameObject BuyPanel;
+    public GameObject commonLodSlot;
     private void Awake()
     {
         if (Instance == null)
@@ -22,15 +23,15 @@ public class BtnManager : MonoBehaviour
     }
     public void CommonRodBtn()
     {
-        if (CoinManager.instance.UseCoin(CoinEnum.SilverCoin, 50))
+        if (CoinManager.instance.UseCoin(CoinEnum.SilverCoin, 20))
         {
             ItemView.instance.BuyRod(rodDataSo[0]);
-            DestoryShopItem();
+            commonLodSlot.SetActive(false);
         }
     }
     public void RareRodBtn()
     {
-        if (CoinManager.instance.UseCoin(CoinEnum.SilverCoin, 200))
+        if (CoinManager.instance.UseCoin(CoinEnum.SilverCoin, 100))
         {
             ItemView.instance.BuyRod(rodDataSo[1]);
             DestoryShopItem();

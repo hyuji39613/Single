@@ -36,6 +36,7 @@ public class InventoryManager : MonoBehaviour
             invenList.Add(slot);
             invenNum++;
         }
+        Debug.Log("A");
     }
     private void Start()
     {
@@ -65,6 +66,7 @@ public class InventoryManager : MonoBehaviour
         sellCheck.SetActive(false);
         BarUi.Instance.sellShop.SetActive(false);
         SellManager.instance.ReSetAll();
+        SellBtnOnOff(false);
         DelBtn();
     }
     public void SellectNo()

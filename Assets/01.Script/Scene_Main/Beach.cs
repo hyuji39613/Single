@@ -11,6 +11,7 @@ public class Beach : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Sea"))
             {
+                PcPosition.instance.inSea = true;
                 SceneManager.LoadScene("SeaInfo");
 
             }
@@ -18,6 +19,7 @@ public class Beach : MonoBehaviour
        
         if (collision.gameObject.CompareTag("Shop"))
         {
+            PcPosition.instance.inShop = true;
             SceneManager.LoadScene("Shop");
         }
     }

@@ -10,6 +10,7 @@ public class Bait : MonoSingleton<Bait>
     public bool trigger = false;
     public GameObject fish;
     public bool pulling;
+    public int trashCount;
     private void Update()
     {
         float a = rod.localScale.x * 0.5f;
@@ -19,7 +20,6 @@ public class Bait : MonoSingleton<Bait>
             pulling = true;
             if (trigger)
             {
-                Debug.Log(trigger);
                 Fish fishCompo = fish.GetComponent<Fish>();
                 fish.transform.position = transform.position;
                 fishCompo.isFising = true;
@@ -35,7 +35,11 @@ public class Bait : MonoSingleton<Bait>
                     else if (fishCompo.fishData.fishEnum == FishEnum.glassCup)
                         ItemView.instance.GlassBtnOn();
                     else
+                    {
                         InventoryManager.instance.FishingItem(fishCompo.fishData);
+                    }
+                    if ((int)fishCompo.fishData.fishEnum > 9) ChallengeManager.instance.trashCount++;
+
                 }
             }
         }
@@ -46,6 +50,7 @@ public class Bait : MonoSingleton<Bait>
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (pulling) return;
         if (collision.gameObject.CompareTag("Fish"))
         {
             fish = collision.gameObject;
@@ -54,6 +59,7 @@ public class Bait : MonoSingleton<Bait>
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (pulling) return;
         if (collision.gameObject.CompareTag("Fish"))
             trigger = false;
     }

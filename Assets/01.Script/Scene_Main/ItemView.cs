@@ -20,6 +20,8 @@ public class ItemView : MonoBehaviour
     [SerializeField]
     private Image arrow;
     private float tweenTime = 1f;
+    public bool firstStart = true;
+    public bool isPot, isGlass;
     private void Awake()
     {
         if(instance == null)
@@ -41,6 +43,11 @@ public class ItemView : MonoBehaviour
         if (index == rodDataSo.Count) index = 0;
         rodData = rodDataSo[index++];
         rodBtnImage.sprite = rodData.rodSprite;
+
+        if (SceneManager.GetActiveScene().name == "Sea")
+        {
+
+        }       
     }
     public void BuyRod(ItemSO item)
     {
@@ -68,6 +75,7 @@ public class ItemView : MonoBehaviour
     public void PotBtnOn()
     {
         potBtn.SetActive(true);
+        isPot = true;
     }
     public void PotBtn()
     {
@@ -76,6 +84,7 @@ public class ItemView : MonoBehaviour
     public void GlassBtnOn()
     {
         glassBtn.SetActive(true);
+        isGlass = true;
     }
     public void GlassBtn()
     {

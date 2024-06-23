@@ -5,33 +5,53 @@ using UnityEngine.SceneManagement;
 
 public class PcPosition : MonoBehaviour
 {
-    private Transform playerTrm;
-    private Vector2 playerPosition = new Vector2(0,0);
+    public bool inShop, inSea;
+    public Transform shopPos, seaPos;
     public static PcPosition instance;
 
     private void Awake()
-    {
-        if(instance == null)
+    {     
+        if (instance == null)
         {
-            DontDestroyOnLoad(gameObject);
             instance = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(this.gameObject);
-        }
-        if (SceneManager.GetActiveScene().name == "Main")
-        { 
-            playerTrm = GameObject.Find("Player").GetComponent<Transform>();
-            MainChange();
+
         }
     }
-    public void SceneChange()
+
+    private void OnDestroy()
     {
-        playerPosition = playerTrm.position;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+
     }
-    public void MainChange()
+
+    private void StartScene()
     {
-        playerTrm.position = playerPosition;
+        Transform playerTrm = GameObject.Find("Player").transform;
+
+        if (inShop)
+        {
+            inShop = false;
+            playerTrm.localPosition = shopPos.position;
+
+        }
+        else if (inSea)
+        {
+            inSea = false;
+            playerTrm.localPosition = seaPos.position;
+        }
     }
-}
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    { 
+        if(scene.name == "Main")
+        {
+            StartScene();
+        }
+    }
+
+ }

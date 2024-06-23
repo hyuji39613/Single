@@ -5,8 +5,8 @@ public class EncyManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> encyList;
     public static EncyManager instance;
-    public int count = 0;
-
+    public int fishcount = 0;
+    public int count;
     private List<int> registList = new List<int>();
     public void EncyEnable(int index)
     {
@@ -14,7 +14,7 @@ public class EncyManager : MonoBehaviour
         {
             registList.Add(index);
             count++;
-            Debug.Log(count);
+            if (index < 10) fishcount++;
         }
         encyList[index].SetActive(true);
     }
