@@ -18,5 +18,4 @@ MonoBehaviour:
   fishSprite: {fileID: 21300000, guid: 8e5ba65128742134183b23da9636ac86, type: 3}
   minY: -6
   maxY: 0
-  price: 7
-  boxSize: {x: 1.5, y: 0.5}
+  price: 3

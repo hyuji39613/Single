@@ -19,7 +19,6 @@ public class ItemView : MonoBehaviour
     private RectTransform itemViewUi;
     [SerializeField]
     private Image arrow;
-    private float tweenTime = 1f;
     public bool firstStart = true;
     public bool isPot, isGlass;
     private void Awake()
@@ -51,6 +50,7 @@ public class ItemView : MonoBehaviour
     }
     public void BuyRod(ItemSO item)
     {
+        rodBtnImage.gameObject.SetActive(true);
         rodDataSo.Add(item);
         rodData = item;
         index = rodDataSo.Count;

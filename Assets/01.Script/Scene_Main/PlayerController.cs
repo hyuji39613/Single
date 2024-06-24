@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
         v = 0;
         h = 0;
         textpanel.SetActive(true);
-        StartCoroutine(Typing("낚시를 하려면 낚싯대가 필요해", 0.1f));
-        yield return new WaitForSeconds(3.5f);
+        StartCoroutine(Typing("안녕! 반가워\n낚시를 하려면 낚싯대가 필요하겠지?", 0.1f));
+        yield return new WaitForSeconds(5f);
         textpanel.SetActive(false);
         h = 1;
         v = 0;

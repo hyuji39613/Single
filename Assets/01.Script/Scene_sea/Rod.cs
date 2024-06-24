@@ -1,11 +1,10 @@
 using DG.Tweening;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 
 public class Rod : MonoBehaviour
 {
-    private ItemSO rodData;
+    public ItemSO rodData;
     public SpriteRenderer bait;
 
     private void Awake()

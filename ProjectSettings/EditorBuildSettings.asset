@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/Sea.unity
     guid: a71b010af579e1342bd7ce50caa17130
-  - enabled: 1
+  - enabled: 0
     path: Assets/00.Scenes/CutScene/SeaInfo.unity
     guid: 9d5aa22f195169947ab037460bfe0483
   - enabled: 1

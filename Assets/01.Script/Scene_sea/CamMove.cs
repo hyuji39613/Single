@@ -8,7 +8,7 @@ public class CamMove : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))    
         {
             transform.position += -transform.up* speed * Time.deltaTime;
         }
@@ -16,6 +16,6 @@ public class CamMove : MonoBehaviour
         {
             transform.position += transform.up * speed * Time.deltaTime;
         }
-        transform.position = new Vector3(transform.position.x,Mathf.Clamp(transform.position.y,-30,0),transform.position.z);
+        transform.position = new Vector3(transform.position.x,Mathf.Clamp(transform.position.y,-21.7f,0),transform.position.z);
     }
 }

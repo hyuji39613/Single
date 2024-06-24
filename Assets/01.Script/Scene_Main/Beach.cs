@@ -12,8 +12,8 @@ public class Beach : MonoBehaviour
             if (collision.gameObject.CompareTag("Sea"))
             {
                 PcPosition.instance.inSea = true;
-                SceneManager.LoadScene("SeaInfo");
-
+                SceneManager.LoadScene("Sea");
+                Time.timeScale = 1f;
             }
         }
        

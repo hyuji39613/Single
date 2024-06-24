@@ -31,7 +31,7 @@ public class BtnManager : MonoBehaviour
     }
     public void RareRodBtn()
     {
-        if (CoinManager.instance.UseCoin(CoinEnum.SilverCoin, 100))
+        if (CoinManager.instance.UseCoin(CoinEnum.SilverCoin, 300))
         {
             ItemView.instance.BuyRod(rodDataSo[1]);
             DestoryShopItem();

@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -14,7 +12,7 @@ public class TutoManager : MonoBehaviour
     public static TutoManager instance;
     [SerializeField] private TextMeshProUGUI talkTxt;
     [SerializeField] private List<string> talkList;
-    [SerializeField] private GameObject textObj,panel;
+    [SerializeField] private GameObject textObj, panel;
     private int index = 0;
     private bool endText;
     private void Start()
@@ -46,10 +44,13 @@ public class TutoManager : MonoBehaviour
         tutoBtnList[1].onClick.AddListener(BtnManager.Instance.CommonRodBtn);
         tutoBtnList[2].onClick.AddListener(BtnManager.Instance.ExitBuyPanel);
     }
-
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= HandleEventChange;
+    }
     private void HandleEventChange(Scene arg0, LoadSceneMode arg1)
     {
-        if ((arg0.name=="Sea"))
+        if ((arg0.name == "Sea"))
         {
             Time.timeScale = 0;
             TalkSys();
@@ -109,7 +110,7 @@ public class TutoManager : MonoBehaviour
     private void SettingBtn()
     {
         textObj.SetActive(false);
-        tutoBtnList[index-2].gameObject.SetActive(true);
+        tutoBtnList[index - 2].gameObject.SetActive(true);
     }
     public void Exitbtn()
     {

@@ -12,7 +12,7 @@ public class CoinManager : MonoBehaviour
     [SerializeField] Text goldCoinTxt, silverCoinTxt;
     [SerializeField] Transform currencyCoin;
     public static CoinManager instance;
-    private int goldCoin = 100, silverCoin = 250;
+    private int goldCoin = 0, silverCoin = 20;
 
 
     public void GetCoin(CoinEnum coinEnum, int value)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EpicRod
   m_EditorClassIdentifier: 
   rodSprite: {fileID: 21300000, guid: 347ab53eaeda3b0458dc5106380405be, type: 3}
-  rodMax: 35
+  rodMax: 31
   rodSpeed: 0.7
-  rodMinAngle: -360
-  rodMaxAngle: 360
+  rodMinAngle: -180
+  rodMaxAngle: 130

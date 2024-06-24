@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class OnStart : MonoBehaviour
 {
-    public void CLickBtn()
+    public void StartCLickBtn()
     {
         SceneManager.LoadScene("Main");
+    }
+    public void QuitLickBtn()
+    {
+        Application.Quit();
     }
 }

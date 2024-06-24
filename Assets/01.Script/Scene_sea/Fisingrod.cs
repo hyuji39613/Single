@@ -7,7 +7,7 @@ public class Fisingrod : MonoBehaviour
 
 {
     private float desiredAngle;
-    private ItemSO rodData;
+    public ItemSO rodData;
 
     private void Awake()
     {

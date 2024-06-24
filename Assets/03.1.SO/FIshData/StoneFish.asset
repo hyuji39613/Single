@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: StoneFish
   m_EditorClassIdentifier: 
   fishEnum: 4
-  coinEnum: 1
+  coinEnum: 0
   speed: 3.5
   fishSprite: {fileID: 21300000, guid: 6bd32dd774f84b248923db2b462c83c0, type: 3}
   minY: -17
   maxY: -7.5
-  price: 0
+  price: 5
